@@ -8,6 +8,9 @@ module.exports = {
     print: './src/print.js'
   },
   devtool: 'inline-source-map', // 有很多不同的选项，打包出来的效果也不一样，参考：https://www.webpackjs.com/configuration/devtool/
+  devServer: {
+    contentBase: './dist'
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
