@@ -1,3 +1,4 @@
 .hello {
   color: red;
+  background: url('./icon.png'); /* css-loader会识别，返回处理后的url并替换 */
 }
