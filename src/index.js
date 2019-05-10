@@ -1,4 +1,5 @@
 import _ from 'loadsh'
+import './style.css'
 
 function component () {
   var element = document.createElement('div')
@@ -6,6 +7,7 @@ function component () {
   // Lodash 是一个一致性、模块化、高性能的 JavaScript 实用工具库。
   // 通过npm模块引入，由隐式变为显式，移除dist/index.html对应script
   element.innerHTML = _.join(['Hello', 'webpack'], ' ')
+  element.classList.add('hello')
 
   return element
 }
