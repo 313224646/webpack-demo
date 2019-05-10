@@ -1,8 +1,10 @@
+import _ from 'loadsh'
+
 function component () {
   var element = document.createElement('div')
 
   // Lodash 是一个一致性、模块化、高性能的 JavaScript 实用工具库。
-  //目前通过一个 script 脚本引入（在index.html的script标签），是一种隐式依赖关系
+  // 通过npm模块引入，由隐式变为显式，移除dist/index.html对应script
   element.innerHTML = _.join(['Hello', 'webpack'], ' ')
 
   return element
