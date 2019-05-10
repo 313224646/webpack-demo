@@ -3,18 +3,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
-  entry: { // 多个js入口
+  entry: {
     app: './src/index.js',
     print: './src/print.js'
   },
+  devtool: 'inline-source-map', // 有很多不同的选项，打包出来的效果也不一样，参考：https://www.webpackjs.com/configuration/devtool/
   plugins: [
-    new CleanWebpackPlugin(), // new CleanWebpackPlugin(['dist']) 官方例子是报错的。Error: clean-webpack-plugin only accepts an options object
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: '管理输出'
+      title: 'Development'
     })
   ],
   output: {
-    filename: '[name].bundle.js', // [name]最终会被替换成entry的key
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   }
 }
