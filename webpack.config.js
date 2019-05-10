@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   entry: { // 多个js入口
@@ -7,6 +8,7 @@ module.exports = {
     print: './src/print.js'
   },
   plugins: [
+    new CleanWebpackPlugin(), // new CleanWebpackPlugin(['dist']) 官方例子是报错的。Error: clean-webpack-plugin only accepts an options object
     new HtmlWebpackPlugin({
       title: '管理输出'
     })
