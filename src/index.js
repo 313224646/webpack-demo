@@ -16,3 +16,10 @@ function component () {
 }
 
 document.body.appendChild(component())
+
+if (module.hot) {
+  module.hot.accept('./print.js', function () { // 应该是个侦听器
+    console.log('Accepting the updated printMe module!')
+    printMe()
+  })
+}
