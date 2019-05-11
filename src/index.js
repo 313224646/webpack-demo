@@ -1,5 +1,6 @@
 import _ from 'loadsh'
 import printMe from './print.js'
+import './styles.css'
 
 function component () {
   var element = document.createElement('div')
