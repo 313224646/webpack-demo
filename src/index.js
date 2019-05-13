@@ -1,30 +1,21 @@
-import _ from 'loadsh'
-import printMe from './print.js'
-import './styles.css'
+/**
+ * 本小节主要展示通过tree shaking清除无用代码
+ * 但是根据demo执行发现，无论是否在package.json使用sideEffects: false，还是在webpack.config.js使用mode: "production"
+ * 构建的bundle.js都是一样
+ * 也许最新的webpack已经做了一些处理，但是文档没有更新，我也没能弄懂它。
+ * 这次commit包含整个tree shaking内容，但它不太可靠。
+ */
+import { cube } from './math.js'
 
 function component () {
-  var element = document.createElement('div')
-  var btn = document.createElement('button')
+  var element = document.createElement('pre')
 
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ')
-
-  btn.innerHTML = 'Click me and check the console!'
-  btn.onclick = printMe
-
-  element.appendChild(btn)
+  element.innerHTML = [
+    'Hello webpack',
+    '5 cubed is equal to ' + cube(5)
+  ].join('\n\n')
 
   return element
 }
 
-let element = component() // 当 print.js 改变导致页面重新渲染时，重新获取渲染的元素
-document.body.appendChild(element)
-
-if (module.hot) {
-  module.hot.accept('./print.js', function () {
-    console.log('Accepting the updated printMe module!')
-     // 只是举个例子，开发肯定不会这样操作
-    document.body.removeChild(element)
-    element = component()
-    document.body.appendChild(element)    
-  })
-}
+document.body.appendChild(component())
